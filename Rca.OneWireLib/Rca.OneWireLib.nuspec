@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Rca.OneWireLib</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/100prznt/Rca.OneWireLib/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/100prznt/Rca.OneWireLib/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Open source UWP library for communication with 1-wire devices.</description>
+    <releaseNotes>For more informations visit: https://github.com/100prznt/Rca.OneWireLib</releaseNotes>
+    <copyright>Copyright © RC-Art Solutions 2019</copyright>
+    <tags>uwp iot sensor one-wire onewire 1-wire dallas-semiconductor maxim-integrated</tags>
+  </metadata>
+</package>
