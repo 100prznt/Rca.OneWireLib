@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 namespace Rca.OneWireLib.Slaves
 {
     /// <summary>
-    /// The  DS18B20  digital  thermometer  provides  9-bit  to 12-bit celsius  temperature measurements
-    /// and has an alarm function with nonvolatile user-programmable upper and lower  trigger points.
+    /// The DS18B20 digital thermometer provides 9-bit to 12-bit celsius temperature measurements
+    /// and has an alarm function with nonvolatile user-programmable upper and lower trigger points.
     /// </summary>
     public partial class DS18B20 : SlaveBase
     {

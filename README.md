@@ -15,10 +15,12 @@ This library targets __UWP IoT projects__! Download directly from NuGet [Rca.One
 
 
 ### Supported 1-Wire® Bridges
-* DS2482-800
+* DS2482-100 - I²C to 1-Wire® bridge
 
 ### Supported 1-Wire® Slaves (Sensors)
-* DS28E17
+* DS28E17 - 1-Wire® slave to I²C master bridge
+* DS18B20 - digital thermometer
+* DS28EC20 - 20480-bit EEPROM
 
 
 ## How To install?
