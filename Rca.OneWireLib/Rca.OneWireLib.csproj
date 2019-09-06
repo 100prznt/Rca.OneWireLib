@@ -122,8 +122,20 @@
   <ItemGroup>
     <Compile Include="CRC16.cs" />
     <Compile Include="CRC8.cs" />
-    <Compile Include="Helpers\ByteArrayExtensions.cs" />
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Masters\DS2482_100.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RomCommand.cs" />
+    <Compile Include="Slaves\SlaveBase.cs" />
+    <Compile Include="Slaves\DS18B20\DS18B20.cs" />
+    <Compile Include="Slaves\DS18B20\DS18b20_FunctionCommand.cs" />
+    <Compile Include="Slaves\DS18B20\DS18B20_Scratchpad.cs" />
+    <Compile Include="Slaves\DS28E17\DS28E17.cs" />
+    <Compile Include="Slaves\DS28E17\DS28E17_DeviceCommand.cs" />
+    <Compile Include="Slaves\DS28E17\DS28E17_I2CSpeed.cs" />
+    <Compile Include="Slaves\DS28E17\DS28E17_Status.cs" />
+    <Compile Include="Slaves\DS28EC20.cs" />
+    <Compile Include="IOneWireDevice.cs" />
     <EmbeddedResource Include="Properties\Rca.EzoDeviceLib.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -134,10 +146,7 @@
   <ItemGroup>
     <None Include="Rca.OneWireLib.nuspec" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Masters\" />
-    <Folder Include="Slaves\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
