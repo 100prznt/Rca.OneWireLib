@@ -13,18 +13,19 @@ namespace Rca.OneWireLib.Masters
     /// The DS2482-100 is an I²C to 1-Wire® bridge device that interfaces directly to standard (100kHz max) or fast (400kHz max)
     /// I²C masters to perform bidirectional protocol conversion between the I²C master and any downstream 1-Wire slave devices.
     /// </summary>
-    public class DS2482_100 : IDisposable
+    public class DS2482_100 : IOneWireMaster, IDisposable
     {
-        #region Constants
-        readonly I2cDevice m_I2CDevice;
+        public int ChannelCount { get; } = 8;
 
-        #endregion Constants
+        public bool IsInitialized { get; private set; }
+
 
         #region Members
         int m_LastDiscrepancy;
         int m_LastFamilyDiscrepancy;
         bool m_LastDeviceFlag;
         byte m_CRC8;
+        I2cDevice m_I2CDevice;
 
         #endregion Members
 
@@ -47,15 +48,21 @@ namespace Rca.OneWireLib.Masters
         /// 
         /// </summary>
         /// <param name="i2cDevice"></param>
-        public DS2482_100(I2cDevice i2cDevice)
+        public DS2482_100()
         {
-            m_I2CDevice = i2cDevice;
             RomNo = new byte[8];
         }
 
         #endregion Constructor
 
         #region Services
+
+        public void Init(I2cDevice i2cDevice)
+        {
+            m_I2CDevice = i2cDevice;
+            IsInitialized = true;
+        }
+
         /// <summary>
         /// Find the 'first' devices on the 1-Wire bus
         /// </summary>
@@ -74,7 +81,7 @@ namespace Rca.OneWireLib.Masters
         /// Find the 'next' devices on the 1-Wire bus
         /// </summary>
         /// <returns>true: device found, ROM number in ROM_NO buffer; false: device not found, end of search</returns>
-        public bool OnoWireNext()
+        public bool OneWireNext()
         {
             // leave the search state alone
             return OneWireSearch();

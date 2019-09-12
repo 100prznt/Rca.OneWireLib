@@ -7,10 +7,10 @@ using Rca.OneWireLib.Masters;
 
 namespace Rca.OneWireLib.Slaves
 {
-    public abstract class SlaveBase : IOneWireDevice
+    public abstract class SlaveBase : IOneWireSlave
     {
         #region IOneWireDevice
-        public DS2482_100 Master { get; set; }
+        public IOneWireMaster Master { get; set; }
 
         public byte[] OneWireAddress { get; set; }
 

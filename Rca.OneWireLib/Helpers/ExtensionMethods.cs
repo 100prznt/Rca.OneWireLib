@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rca.OneWireLib.Slaves;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,9 @@ namespace Rca.OneWireLib.Helpers
         /// Get a specified OneWireDevice
         /// </summary>
         /// <typeparam name="T">Type of the device to be selected.</typeparam>
-        /// <param name="devices">Collection of <see cref="IOneWireDevice"/></param>
+        /// <param name="devices">Collection of <see cref="IOneWireSlave"/></param>
         /// <returns>Selected device</returns>
-        public static IEnumerable<T> GetDevices<T>(this IEnumerable<IOneWireDevice> devices) where T : IOneWireDevice
+        public static IEnumerable<T> GetDevices<T>(this IEnumerable<IOneWireSlave> devices) where T : IOneWireSlave
         {
             var result = new List<T>();
             foreach (var item in devices.Where(dev => dev.GetType().Equals(typeof(T))))
