@@ -21,15 +21,17 @@ namespace Rca.OneWireLib_SampleApp
             m_OneWireController.SearchSlaves();
         }
 
-        public void GetSlaveInfo()
+        public void TestThermometer()
         {
-            var infos = m_OneWireController.GetSlaveInfos();
+            var infos = m_OneWireController.GetSlaveInfos(); //Get info of all connected slaves
 
-            var infoDS18B20 = infos.FirstOrDefault(x => x.FamilyCode == FamilyCode.DS18B20);
+            var infoDS18B20 = infos.FirstOrDefault(x => x.FamilyCode == FamilyCode.DS18B20); //look for a DS18B20 device
 
-            if (infoDS18B20 != null)
+            if (infoDS18B20 != null) //if DS18B20 available
             {
-                var slave1 = m_OneWireController.GetSlave<DS18B20>(infoDS18B20.MasterChannel, infoDS18B20.Address);
+                var thermometer = m_OneWireController.GetSlave<DS18B20>(infoDS18B20.MasterChannel, infoDS18B20.Address);
+
+                var temperature = thermometer.GetTemperature();
             }
         }
     }
