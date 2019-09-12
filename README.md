@@ -1,12 +1,12 @@
 ## Project under construction :construction:
 ```diff
-! This project is currently  (2019/09/05) under construction.
+! This project is currently  (2019/09/12) under construction.
 ```
 
 ---
 
 # OneWire Library
-Open source UWP library for communication with 1-Wire® devices. 
+Open source UWP 1-Wire® library. Supports I2C single and eight channel masters (DS2482) and various slaves like thermometer, I2C-bridge, EEPROM, etc. 
 
 This library targets __UWP IoT projects__! Download directly from NuGet [Rca.OneWireLib on NuGet](https://nuget.org/packages/Rca.OneWireLib).
 
@@ -30,17 +30,7 @@ Download the source from GitHub or get the compiled assembly from NuGet [Rca.One
 
 
 ## How to use?
-...
-
-
-In the following a few basic usage examples of the library.
-
-### Create an instance of the 1-wire master
-...:
-```cs
-//...
-```
-
+Sample code can be found in the ``Rca.OneWireLib_SampleApp`` project.
 
 
 ## Credits
