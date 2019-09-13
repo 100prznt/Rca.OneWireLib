@@ -8,25 +8,17 @@ namespace Rca.OneWireLib.Slaves
 {
     public partial class DS18B20
     {
-        class Scratchpad
+        enum Scratchpad
         {
-            public const int TemperatureLSB = 0;
-
-            public const int TemperatureMSB = 1;
-
-            public const int ThRegisterOrUserByte1 = 2;
-
-            public const int TlRegisterOrUserByte2 = 3;
-
-            public const int ConfigurationRegister = 4;
-
-            public const int Reserved = 5;
-
-            public const int Reserved2 = 6;
-
-            public const int Reserved3 = 7;
-
-            public const int CRC = 8;
+            TemperatureLSB = 0,
+            TemperatureMSB = 1,
+            ThRegisterOrUserByte1 = 2,
+            TlRegisterOrUserByte2 = 3,
+            ConfigurationRegister = 4,
+            Reserved = 5,
+            Reserved2 = 6,
+            Reserved3 = 7,
+            CRC = 8
         }
     }
 }

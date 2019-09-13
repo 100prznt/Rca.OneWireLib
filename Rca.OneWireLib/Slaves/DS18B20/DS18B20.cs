@@ -1,6 +1,7 @@
 ﻿using Rca.OneWireLib.Helpers;
 using Rca.OneWireLib.Masters;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,13 +13,15 @@ namespace Rca.OneWireLib.Slaves
     /// </summary>
     public partial class DS18B20 : SlaveBase
     {
+        //TODO: Add configuration of DS18B20
+
         public override void Initialize()
         {
 
         }
 
         /// <summary>
-        /// Perform a temperatur reading and returns the result
+        /// Perform a temperature reading and returns the result
         /// </summary>
         /// <returns>Temperature in Celcius</returns>
         public double GetTemperature()
@@ -36,14 +39,12 @@ namespace Rca.OneWireLib.Slaves
             var scratchpadData = new byte[9];
 
             for (int i = 0; i < scratchpadData.Length; i++)
-            {
                 scratchpadData[i] = Master.OneWireReadByte();
-            }
 
             if (CRC8Maxim.ComputeChecksum(scratchpadData) != 0)
-                throw new Exception("Invalid crc");
+                throw new Exception("Invalid CRC of scratchpad data from DS18B20!");
 
-            return ConvertTemperature(scratchpadData[DS18B20.Scratchpad.TemperatureMSB], scratchpadData[DS18B20.Scratchpad.TemperatureLSB]);
+            return ConvertTemperature(scratchpadData[(int)DS18B20.Scratchpad.TemperatureMSB], scratchpadData[(int)DS18B20.Scratchpad.TemperatureLSB]);
         }
 
         private double ConvertTemperature(byte msb, byte lsb)
@@ -103,46 +104,5 @@ namespace Rca.OneWireLib.Slaves
 
             return tempRead;
         }
-
-        //public double GetTemperature()
-        //{
-        //    byte[] scratchpad = GetTemperatureScratchpad();
-
-        //    return ConvertTemperature(scratchpad[DS18B20.Scratchpad.TemperatureMSB], scratchpad[DS18B20.Scratchpad.TemperatureLSB]);
-        //}
-
-        //protected byte[] GetTemperatureScratchpad()
-        //{
-        //    ResetOneWireAndMatchDeviceRomAddress();
-        //    Master.EnableStrongPullup();
-        //    StartTemperatureConversion();
-
-        //    ResetOneWireAndMatchDeviceRomAddress();
-
-        //    var scratchpad = ReadScratchpad();
-        //    return scratchpad;
-        //}
-
-        //void StartTemperatureConversion()
-        //{
-        //    Master.OneWireWriteByte(FunctionCommand.ConvertT);
-
-        //    Task.Delay(TimeSpan.FromSeconds(1)).Wait();
-        //}
-
-        //byte[] ReadScratchpad()
-        //{
-        //    Master.OneWireWriteByte(FunctionCommand.ReadScratchpad);
-
-        //    var scratchpadData = new byte[9];
-
-        //    for (int i = 0; i < scratchpadData.Length; i++)
-        //    {
-        //        scratchpadData[i] = Master.OneWireReadByte();
-        //    }
-
-        //    return scratchpadData;
-        //}
-
     }
 }
