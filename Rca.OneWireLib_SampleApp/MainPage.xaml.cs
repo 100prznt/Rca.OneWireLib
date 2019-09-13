@@ -32,16 +32,16 @@ namespace Rca.OneWireLib_SampleApp
 
             m_Sandbox = new Sample1();
 
-            m_Sandbox.Init();
+            m_Sandbox.InitMaster();
 
-            //Testloop
-            Debug.WriteLine("Start test loop");
+            //Test loop
+            Debug.WriteLine("Test loop has started.");
             var noError = true;
             while (noError)
             {
                 try
                 {
-                    m_Sandbox.TestThermometer();
+                    noError = m_Sandbox.DS18B20_Sample();
                     SpinWait.SpinUntil(() => false, 500);
                 }
                 catch (Exception ex)
@@ -50,6 +50,8 @@ namespace Rca.OneWireLib_SampleApp
                     noError = false;
                 }
             }
+
+            Debug.WriteLine("Test loop complete.");
         }
     }
 }

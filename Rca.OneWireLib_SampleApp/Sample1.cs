@@ -14,7 +14,7 @@ namespace Rca.OneWireLib_SampleApp
     {
         OneWireController m_OneWireController;
 
-        public void Init()
+        public void InitMaster()
         {
             m_OneWireController = new OneWireController();
 
@@ -22,7 +22,11 @@ namespace Rca.OneWireLib_SampleApp
             m_OneWireController.SearchSlaves();
         }
 
-        public void TestThermometer()
+        /// <summary>
+        /// Sample for DS18B20
+        /// </summary>
+        /// <returns>true: success; false: error</returns>
+        public bool DS18B20_Sample()
         {
             var infos = m_OneWireController.GetSlaveInfos(); //Get info of all connected slaves
 
@@ -30,13 +34,19 @@ namespace Rca.OneWireLib_SampleApp
 
             if (infoDS18B20 != null) //if DS18B20 available
             {
-                m_OneWireController.SelectMasterChannel(infoDS18B20.MasterChannel);
+                m_OneWireController.SelectMasterChannel(infoDS18B20.MasterChannel); //Select the master channel!
 
-                var thermometer = m_OneWireController.GetSlave<DS18B20>(infoDS18B20.MasterChannel, infoDS18B20.Address);
+                var thermometer = m_OneWireController.GetSlave<DS18B20>(infoDS18B20.MasterChannel, infoDS18B20.Address); //Get the slave (DS18B20) device instance
 
-                var temperature = thermometer.GetTemperature();
+                var temperature = thermometer.GetTemperature(); //Slave operation
 
-                Debug.WriteLine($"Temperature reading: {temperature} °C");
+                Debug.WriteLine($"Temperature reading: {temperature} °C"); //Print out
+                return true;
+            }
+            else
+            {
+                Debug.WriteLine("DS18B20 not available!");
+                return false;
             }
         }
     }
