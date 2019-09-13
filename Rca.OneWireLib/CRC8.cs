@@ -10,6 +10,7 @@ namespace Rca.OneWireLib
     /// CRC-8 checksum class
     /// Source: http://sanity-free.org/146/crc8_implementation_in_csharp.html
     /// </summary>
+    [Obsolete]
     public static class CRC8
     {
         #region Constants

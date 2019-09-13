@@ -3,6 +3,7 @@ using Rca.OneWireLib.Masters;
 using Rca.OneWireLib.Slaves;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,9 +30,13 @@ namespace Rca.OneWireLib_SampleApp
 
             if (infoDS18B20 != null) //if DS18B20 available
             {
+                m_OneWireController.SelectMasterChannel(infoDS18B20.MasterChannel);
+
                 var thermometer = m_OneWireController.GetSlave<DS18B20>(infoDS18B20.MasterChannel, infoDS18B20.Address);
 
                 var temperature = thermometer.GetTemperature();
+
+                Debug.WriteLine($"Temperature reading: {temperature} °C");
             }
         }
     }

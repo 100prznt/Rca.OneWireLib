@@ -121,6 +121,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CRC16.cs" />
+    <Compile Include="CRC8Maxim.cs" />
     <Compile Include="CRC8.cs" />
     <Compile Include="FamilyCodeExtensions.cs" />
     <Compile Include="SlaveAttribute.cs" />

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -29,6 +31,25 @@ namespace Rca.OneWireLib_SampleApp
             this.InitializeComponent();
 
             m_Sandbox = new Sample1();
+
+            m_Sandbox.Init();
+
+            //Testloop
+            Debug.WriteLine("Start test loop");
+            var noError = true;
+            while (noError)
+            {
+                try
+                {
+                    m_Sandbox.TestThermometer();
+                    SpinWait.SpinUntil(() => false, 500);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                    noError = false;
+                }
+            }
         }
     }
 }

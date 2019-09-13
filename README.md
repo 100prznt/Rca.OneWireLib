@@ -48,4 +48,4 @@ Contributions are welcome. Fork this repository and send a pull request if you h
 
 
 ## Related Projects
-* OPC
+* [OpenPoolControl](https://github.com/100prznt/opc) - My very own pool controller.

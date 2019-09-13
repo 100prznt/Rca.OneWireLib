@@ -55,6 +55,11 @@ namespace Rca.OneWireLib
             }
         }
 
+        public void SelectMasterChannel(int channel)
+        {
+            m_Master.OneWireSelectChannel(channel);
+        }
+
         /// <summary>
         /// Search all connected slaves
         /// </summary>
