@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Rca.OneWireLib.Helpers;
 using Rca.OneWireLib.Masters;
+using Windows.Devices.I2c;
 
 namespace Rca.OneWireLib.Slaves
 {
@@ -18,7 +19,7 @@ namespace Rca.OneWireLib.Slaves
         public override void Initialize()
         {
             var rev = ReadRevision();
-            SetConfiguration(DS28E17.I2CSpeed.I2C_Speed100kHz);
+            SetConfiguration(I2cBusSpeed.StandardMode);
             var conf = ReadConfiguration();
 
             //TestWrite();
@@ -48,14 +49,14 @@ namespace Rca.OneWireLib.Slaves
         /// Configuration register.
         /// </summary>
         /// <param name="speed">I²C Speed</param>
-        public void SetConfiguration(DS28E17.I2CSpeed speed)
+        public void SetConfiguration(I2cBusSpeed busSpeed)
         {
             ResetOneWireAndMatchDeviceRomAddress();
 
             Master.EnableStrongPullup();
 
             Master.OneWireWriteByte((byte)DS28E17.DeviceCommand.WriteConfiguration);
-            Master.OneWireWriteByte((byte)speed);
+            Master.OneWireWriteByte((byte)busSpeed); //Also 900 kHz are supported (set value = 0b00000010)
         }
 
         /// <summary>

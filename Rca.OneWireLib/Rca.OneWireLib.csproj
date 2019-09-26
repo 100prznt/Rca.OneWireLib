@@ -139,7 +139,6 @@
     <Compile Include="Slaves\DS18B20\DS18B20_Scratchpad.cs" />
     <Compile Include="Slaves\DS28E17\DS28E17.cs" />
     <Compile Include="Slaves\DS28E17\DS28E17_DeviceCommand.cs" />
-    <Compile Include="Slaves\DS28E17\DS28E17_I2CSpeed.cs" />
     <Compile Include="Slaves\DS28E17\DS28E17_Status.cs" />
     <Compile Include="Slaves\DS28EC20.cs" />
     <Compile Include="Slaves\IOneWireSlave.cs" />
