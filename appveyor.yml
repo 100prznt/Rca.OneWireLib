@@ -21,6 +21,7 @@ skip_commits:
 before_build:
 - cmd: nuget restore
 build:
+  project: Rca.OneWireLib/Rca.OneWireLib.csproj
   publish_nuget: true
   verbosity: minimal
 deploy:
