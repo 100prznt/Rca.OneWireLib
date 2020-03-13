@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rca.OneWireLib.Slaves
 {
-    internal interface IOneWireSlave
+    public interface IOneWireSlave
     {
         IOneWireMaster Master { get; set; }
 

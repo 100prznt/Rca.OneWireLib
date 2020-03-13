@@ -10,6 +10,8 @@ assembly_info:
   assembly_informational_version: '{version}'
 nuget:
   project_feed: true
+only_commits:
+  message: /\[ci\]/
 skip_commits:
   files:
     - docs/
