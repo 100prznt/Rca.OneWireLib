@@ -8,6 +8,12 @@ namespace Rca.OneWireLib.Helpers
 {
     public class ByteArrayComparer
     {
+        /// <summary>
+        /// Compare 2 byte-arrays
+        /// </summary>
+        /// <param name="a">Array A</param>
+        /// <param name="b">Array B</param>
+        /// <returns>true: arrays are equal</returns>
         public bool Compare(byte[] a, byte[]b)
         {
             if (a.Length != b.Length)
