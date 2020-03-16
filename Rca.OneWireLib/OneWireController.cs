@@ -1,4 +1,5 @@
-﻿using Rca.OneWireLib.Masters;
+﻿using Rca.OneWireLib.Helpers;
+using Rca.OneWireLib.Masters;
 using Rca.OneWireLib.Slaves;
 using System;
 using System.Collections.Generic;
@@ -114,13 +115,17 @@ namespace Rca.OneWireLib
         /// <returns>Slave device</returns>
         public T GetSlave<T>(int channel, byte[] address)
         {
+            var bComp = new ByteArrayComparer();
             //TODO: Check whether only one slave meets the conditions.
-            var container = m_SlaveContainers.FirstOrDefault(x => x.Info.MasterChannel == channel && x.Slave.OneWireAddress == address);
+            var container = m_SlaveContainers.FirstOrDefault(x => x.Info.MasterChannel == channel && bComp.Compare(x.Slave.OneWireAddress, address));
+
+            if (container == null)
+                throw new Exception($"Device with specified address {BitConverter.ToString(address)} not found on channel {channel}");
 
             if (container != null && container.Slave is T)
                 return (T)container.Slave;
             else
-                throw new Exception("Device not found!");
+                throw new Exception("Specified device type not matchs.");
         }
 
         #endregion Services
