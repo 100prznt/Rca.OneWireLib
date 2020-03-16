@@ -124,6 +124,7 @@
     <Compile Include="CRC8Maxim.cs" />
     <Compile Include="CRC8.cs" />
     <Compile Include="FamilyCodeExtensions.cs" />
+    <Compile Include="Helpers\ByteArrayComparer.cs" />
     <Compile Include="SlaveAttribute.cs" />
     <Compile Include="FamilyCode.cs" />
     <Compile Include="Helpers\ExtensionMethods.cs" />
