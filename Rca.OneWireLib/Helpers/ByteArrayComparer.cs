@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Rca.OneWireLib.Helpers
 {
+    /// <summary>
+    /// Helper to compare byte-arrays
+    /// </summary>
     public class ByteArrayComparer
     {
         /// <summary>
